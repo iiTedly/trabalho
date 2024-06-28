@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foguete</title>
+    <style>
+        body,html {
+            width: 100%;
+            height: 100vh;
+            margin: 0px;
+            overflow: hidden;
+            background-image: linear-gradient(0deg, lightblue, darkblue);
+        }
+
+        .foguete {
+            position: absolute;
+            bottom: 0px;
+            left: 50%;
+            margin-left: -40px;
+            width: 80px;
+        }
+
+        .navio {
+            position: absolute;
+            bottom: 0px;
+            left: 300px;
+            width: 200px;
+        }
+
+        .exercicio{
+            position: absolute;
+            top:350px;
+            left:10px;
+            width: 300px;
+            font-size: 14px;
+            word-wrap: break-word;
+            border-style: solid;
+            padding: 10px;
+            text-align: justify;
+        }
+
+       
+    </style>
+
+<body>
+
+    <div class="exercicio">
+        O código deste programa possui algumas funções com temporizador, descreva passo-a-passo o que as funções "Subir", "Desce" e "Descer" fazem.
+        Após fazer a descrição, altere o código para que o foguete pouse no navio.
+    </div>
+
+    <img src="foguete.gif" id="foguete" class="foguete">
+
+    <img src="navio.png" id="navio" class="navio">
+
+</body>
+
+
+<script src="jquery-3.7.0.min.js"></script>
+
+<script>
+
+    altura_tela =  window.innerHeight;  
+    largura_tela =  window.innerWidth; 
+    
+    setTimeout(Subir, 1000);   // Chama a função "Subir" após 1000 milissegundos (1 segundos)
+    
+    x = foguete.offsetLeft;   // Pega a posição LEFT do id="foguete" e guarda na variável "x"
+    ESQUERDA = "";
+
+    y = 100;
+    TOPO = "";
+   
+    function Subir() 
+    {
+            TOPO = y + "px";
+            $("#foguete").animate({ top: TOPO }, 5000, Desce)  //  Está realizando a função subir, com um tempo de 5000
+    }
+
+    function Desce()
+    {
+        setInterval(Descer, 5)   // É o intervalo de tempo após a realização da função de subir para começar a descer
+    }
+
+    function Descer() 
+    {        
+        y = y + 100
+        TOPO = y + "px"   // Este linha é descrevendo que subir é y e que deve somar com a quantidade de pixels descrita
+
+        x = x + -100
+        ESQUERDA = x + "px"   // Esquerda é igual à X e deve somar com a quantidade de pixels descrita
+          
+        $("#foguete").animate({ top: TOPO, left:ESQUERDA }, 1000)   // Está dizendo para realizar as animações TOPO e ESQUERDA com um tempo de 1000
+        
+        if (y > altura_tela - 1000) 
+        {
+            y = altura_tela- 210;
+        }
+
+        if (x > largura_tela - 5000) 
+        {
+            x = largura_tela - 800;
+        }
+    }
+</script>
+
+</html>

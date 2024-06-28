@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <title>CONEXÃO MQTT</title>
+    <style> 
+    #resposta
+    {
+        width: 600px;
+        height: 500px;
+        overflow-y: scroll;
+        background-color: lightblue
+    }
+    </style>
+</head>
+<body>
+    Apelido: <input type="text" id="apelido" size="2">
+    Mensagem: <input type="text" id="texto" size="50">
+    <button onclick="Enviar();"> OK</button>
+    <button onclick="EnviarBeijo();"> BEIJO</button>
+    <button onclick="EnviarAbraço();"> ABRAÇO</button>
+    <button onclick="EnviarDormir();"> DORMIR</button>
+    <button onclick="EnviarMaluquice();"> MALUQUICE</button>
+    <button onclick="EnviarMensagem();"> MENSAGEM</button>
+    <button onclick="EnviarAmor();">AMOR</button>
+    <button onclick="EnviarAnime();">ANIME</button>
+    <br><br>
+    <div id="resposta"></div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js"> </script>
+
+<script>
+
+    //cria o tópico (variável) que será acessado pelo PCs
+    //Todo Pc que usar este tópico conseguirá receber as mensagens
+    topico = "cedup/texto"
+
+    //Cria um cliente para se conectar ao servidor MQTT na porta 8000
+    client = new Paho.MQTT.Client("broker.hivemq.com",Number (8000),"")
+    client.connect( {onSuccess:conectou} )
+
+    function conectou(){
+        //Enviar o tópico (variável) lida por todos os computadores
+        client.subscribe (topico)
+        message=new Paho.MQTT.Message('')
+        message.destinationName = topico
+    }
+
+    //Criando as funções: Conexao_Perdida e Mensagem_Chegou
+    client.onConnectionLost = Conexao_Perdida
+    client.onMessageArrived = Mensagem_Chegou
+
+    //Se perder a conexão será executada essa função:
+    function Conexao_Perdida (responseObject) {
+        if (responseObject.errorCode !==0) {
+            resposta.innerHTML += "Desconectado: " + responseObject.errorMessage
+        }
+    }
+
+    //Sempre que alguém atualizar o tópico cedup/texto esta função é executada 
+    function Mensagem_Chegou (message){
+        resposta.innerHTML += "<br>"
+        resposta.innerHTML += message.payloadString
+    }
+
+    function Enviar ()
+    {
+        valor = apelido.value + ": " + texto.value
+        message = new Paho.MQTT.Message(valor)
+        message.destinationName = topico
+        client.send (message)
+    }
+
+    function EnviarBeijo ()
+    {
+        valor = apelido.value + ": " + "<img src ='https://media.tenor.com/f1xnRxTRxLAAAAAj/bears-with-kisses-bg.gif' width='100px'>"
+        message = new Paho.MQTT.Message(valor)
+        message.destinationName = topico
+        client.send (message)
+    }
+
+    function EnviarAbraço ()
+    {
+        valor = apelido.value + ": " + "<img src ='https://i.pinimg.com/originals/89/49/8d/89498d1187c65bdae3a66475d556ca07.gif' width='100px'>"
+        message = new Paho.MQTT.Message(valor)
+        message.destinationName = topico
+        client.send (message)
+    }
+
+    function EnviarDormir ()
+    {
+        valor = apelido.value + ": " + "<img src ='https://i.pinimg.com/originals/6c/0c/76/6c0c76728d54242dd75bc179584e4a76.gif' width='100px'>"
+        message = new Paho.MQTT.Message(valor)
+        message.destinationName = topico
+        client.send (message)
+    }
+
+    function EnviarMaluquice ()
+    {
+        valor = apelido.value + ": " + "<img src ='https://gifman.net/wp-content/uploads/2019/06/ursinho-fofo-faz-careta-e-peida.gif' width='100px'>"
+        message = new Paho.MQTT.Message(valor)
+        message.destinationName = topico
+        client.send (message)
+    }
+
+    function EnviarMensagem ()
+    {
+        valor = apelido.value + ": " + "<img src ='https://www.icegif.com/wp-content/uploads/da-bears-icegif-15.gif' width='100px'>"
+        message = new Paho.MQTT.Message(valor)
+        message.destinationName = topico
+        client.send (message)
+    }
+
+    function EnviarAmor()
+    {
+        valor = apelido.value + ": " + "<img src ='https://i.pinimg.com/originals/a7/82/65/a78265b0b77bbe24b312cc46b4702869.gif' width='300px'>"
+        message = new Paho.MQTT.Message(valor)
+        message.destinationName = topico
+        client.send (message)
+    }
+
+    function EnviarAnime()
+    {
+        valor = apelido.value + ": " + "<img src ='https://pa1.aminoapps.com/6946/0f916d5085833211943482b51da9981f5d4f391cr1-250-183_00.gif' width='180px'>"
+        message = new Paho.MQTT.Message(valor)
+        message.destinationName = topico
+        client.send (message)
+    }
+
+</script>
+</html>

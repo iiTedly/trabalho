@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    -webkit-text-size-adjust: none;
+}
+
+body {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    font-family:'Times New Roman', Times, serif;
+    background-color: #0fb300;
+    background-image: url("imagens/arcade.png");
+}
+
+#container{
+    border-radius: 9px;
+    position: relative;
+    height: 88vh;
+    width: 55%;
+    left: 25%;
+    margin-top: 20px;
+    background-color: #202020;
+    overflow: hidden;
+}
+
+#line_1{
+    top: -150px;
+}
+#line_2{
+    top: 150px;
+}
+#line_3{
+    top: 450px;
+}
+.car{
+    position: absolute;
+    height: 70px;
+    width: 50px;
+    border-radius: 5px 5px 18px 18px;
+}
+#car{
+    bottom: 10%;
+    left: 40%;
+    height: 50px;
+    width: 30px;
+    background-color: #dad9d7;
+}
+
+.f_glass{
+    position: absolute;
+    height: 6%;
+    width: 20%;
+    margin-left: 40%;
+    top: -7%;
+    border-radius: 5px 5px 0px 0px;
+    background-color: #c751a3;
+}
+
+.f_glass1{
+    position: absolute;
+    height: 6%;
+    width: 20%;
+    margin-left: 40%;
+    top: -8%;
+    border-radius: 5px 5px 0px 0px;
+    background-color: #000000;
+}
+
+.b_glass1{
+    position: absolute;
+    height: 25%;
+    width: 15%;
+    margin-left: 40%;
+    bottom: -23%;
+    border-radius: 0px 0px 5px 5px;
+    background-color: #be58a0;
+}
+
+.f_light_l{
+    position: absolute;
+    height: 10%;
+    width: 20%;
+    margin-left: 10%;
+    top: 6%;
+    border-radius: 10px 5px 5px 10px;
+    background-color: #9e8484;
+}
+.f_light_r{
+    position: absolute;
+    height: 10%;
+    width: 20%;
+    margin-left: 70%;
+    top: 6%;
+    border-radius: 10px 5px 5px 10px;
+    background-color: #9e8484;
+}
+
+#car_1{
+    top: -100px;
+    left: 60%;
+    background-color: #803e00;
+}
+#car_2{
+    top: -200px;
+    left: 40%;
+    background-color: #000000;
+}
+#car_3{
+    top: -350px;
+    left: 50%;
+    background-color: #ff8800;
+}
+#restart_div {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #292929;
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    display: none;
+}
+
+#restart {
+    border: 1px;
+    padding: 25px;
+    color: white;
+    background-color: #8a64ff;
+    border-radius: 10px;
+    font-size: 30px;
+    margin-top: 30%;
+}
+
+.small_text{
+    font-size: 15px;
+}
+#score_div{
+    position: absolute;
+    margin-top: 20%;
+    margin-left: 4%;
+    font-size: 30px;
+    background-color: white;
+    color: #454545;
+    padding: 10px;
+    box-shadow: 4px 4px 0px 1px #808080;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#help{
+	text-align: center;
+    color: rgb(255, 240, 240);
+    background-color: #8a64ff;
+    padding: 2px;
+    border-radius: 10px;
+}
+
+h5{
+    color: white;
+    background-color: #8a64ff;
+    text-align: center;
+    padding: 2px;
+    border-radius:  10px;
+}
